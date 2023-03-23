@@ -233,3 +233,8 @@ public functiion gets(){ code here... }
 public functiion create(){ code here... }
 public function update(){ code here ...}
 </pre>
+
+<hr>
+
+<h1>Admin Dashboard Template</h1>
+https://startbootstrap.com/theme/sb-admin-2

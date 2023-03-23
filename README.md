@@ -123,3 +123,4 @@ application
 			> add helper
 			$autoload['helper'] = array('url','html','file','form');
 </pre>
+

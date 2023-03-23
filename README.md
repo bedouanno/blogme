@@ -124,3 +124,112 @@ application
 			$autoload['helper'] = array('url','html','file','form');
 </pre>
 
+
+<hr>
+
+<h1>Code Snippets:</h1>
+
+<pre>
+base_url();
+// short code for main url ./ 'http://example.com/'
+	> used to source the files and links
+	> base from config.php //$config['base_url'] = 'http://example.com/';
+</pre>
+	
+<h3>CONTROLLER</h3>
+
+<p>// every control has constructor for Initialization</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+$variable_to_call; 
+
+function __construct(){
+	parent::__construct(); // needed when adding a constructor to a controller
+	
+	$this->variable_to_call = array();		
+}
+</pre>
+
+<p>// Sample Function for view</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+public function index(){}
+public function view($id =  NULL){}
+</pre>
+
+
+<p>// How to get view </p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+$this->load->('head', $data);
+$this->load->('header', $data);
+$this->load->('main-folder/file-name', $data);
+$this->load->('footer', $data);
+</pre>
+
+<h3>VIEW -> FORM</h3>
+<pre style="background: black; color: #fff; padding: 15px;">
+echo form_open('url-link'); 
+</pre>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+echo form_close() ?></php> // used to generate the closing </form> tag.
+</pre>
+
+<p>helper function provided by CodeIgniter that generates the opening HTML form tag with the specified parameters. It is a convenient way to create an HTML form with the required attributes and security features that are necessary to prevent cross-site request forgery (CSRF) attacks.</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+echo form_open_multipart('url-link');
+is a variant of the form_open() helper function in CodeIgniter that adds the enctype="multipart/form-data" attribute to the opening <form> tag. This attribute is required when you want to allow users to upload files through the form.
+</pre>
+
+<p>// Use to add validate message</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+if(!empty(validation_errors())): 
+echo validation_errors(); 
+ endif; 
+</pre>
+
+<h3>VIEW -> CONTROLLER</h3>
+<p>// shortcode to get the input from form</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+$this->input->post('field name');
+$this->form_validation->set_rules('field_name','Field Name','required');
+</pre>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+if(!$this->form_validation->run() === FALSE){ code hree... } else { if true, manipulate data }
+</pre>
+
+<p>// used to store a temporary data in a session that can be accessed only once.</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+$this->session->set_flashdata('key', 'value');
+$this->session->set_flashdata('msg_created', 'Created topic successfuly!')
+</pre>
+
+<p>// used to redirect the user to a different URL or route. </p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+redirect();
+</pre>
+
+<h3>MODEL -> CONTROLLER</h3>
+<p>// adding constructor to iniitialize the database</p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+public function __construct(){
+	$this->load->database();
+}
+</pre>
+
+<p>// Sample Function for model<p>
+
+<pre style="background: black; color: #fff; padding: 15px;">
+public functiion get($id = FALSE){ code here... }
+public functiion gets(){ code here... }
+public functiion create(){ code here... }
+public function update(){ code here ...}
+</pre>

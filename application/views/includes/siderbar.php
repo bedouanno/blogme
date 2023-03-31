@@ -19,7 +19,7 @@
                     <span>Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:;">
+                <a class="nav-link" href="<?php echo base_url(); ?>blog/post">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Blog</span></a>
             </li>

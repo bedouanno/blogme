@@ -20,12 +20,10 @@ class Blog extends CI_Controller {
 
     public function post(){
             $data['title'] = 'Post';
-
             $data['posts'] = $this->blog_model->get_posts();
         
             $this->form_validation->set_rules('post_title','Post Title','required');
             $this->form_validation->set_rules('post_content','Post Content');
-
 
             if($this->form_validation->run() === FALSE){ 
                 $this->load->view('includes/head');
@@ -44,19 +42,13 @@ class Blog extends CI_Controller {
 
                 redirect('blog/post');
             }
-
-      
-
     
         }
 
         public function delete_post($id){
-
             $this->blog_model->delete_post($id);
-
             redirect('blog/post');
 
-  
         }
 
 

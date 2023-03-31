@@ -1,0 +1,35 @@
+Free Bootstrap admin templates:
+
+1. SB Admin
+https://startbootstrap.com/previews/sb-admin-2
+
+2. AdminLTE
+https://adminlte.io/themes/v3
+
+3. Gentelella
+https://colorlib.com/polygon/gentelella/
+
+4. Bootstrap Dash
+https://www.bootstrapdash.com/?s=free&id=68061&post_type=product
+
+5. Light Bootstrap Dashboard
+https://demos.creative-tim.com/light-bootstrap-dashboard
+
+6. Startmin
+http://secondtruth.github.io/startmin/pages/index.html
+
+7. Tabler
+https://tabler.io/preview
+
+8. Shards Dashboard Lite
+https://designrevision.com/demo/shards-dashboard-lite/
+
+9. CoreUI Free Bootstrap Admin Template
+https://coreui.io/product/free-bootstrap-admin-template/#live-preview
+
+10. Material Dashboard Free
+https://demos.creative-tim.com/material-dashboard/pages/dashboard
+
+
+
+

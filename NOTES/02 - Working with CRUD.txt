@@ -1,0 +1,85 @@
+Codeigniter - CRUD
+
+First, let's create Model named "Blog"
+
+application
+	> models
+		- [create] Blog.php
+		
+php:code
+class Blog_model extends CI_Model{
+	// initialize constructor: allows you to initialize an object's properties upon creation of the object.
+	
+	public function __construct(){
+		$this->load->database();
+	}
+}
+
+Once "Blog" model created, and go to:
+
+Application
+	> config
+		[open] autoload.php
+			$autoload['model'] = array('blog_model');
+			// initializes the model to be use in control file
+			
+
+Create CRUD function with SQL query
+
+Blog.php
+
+CREATE
+	public function create_post($data = FALSE){
+		$data = array(
+			'title' => $this->input->post('title'),
+			'blog_content' => $this->input->post('blog_content'),
+			'date_created' => $this->input->post('date_created'),
+		);
+		return $this->db->insert('users', $data);
+	}
+		
+
+READ
+php:code
+	// function to GET data
+	public funtion get_posts(){
+		$query = $this->db->get('table_name');
+		return $query->result_array();
+
+	}
+
+	public funtion get_post($id = FALSE){
+		if($id === FALSE){
+			$query = $this->db->get('blogs');
+			return $query->result_array();
+		}
+		$query = $this->db->get_where('blogs', array('id' => $id));
+		return $query->row_array();
+	}
+
+UPDATE
+
+    public function update_post($id = FALSE, $data = FALSE){
+		$data = array(
+			'title' => $this->input->post('title'),
+			'blog_content' => $this->input->post('blog_content'),
+			'date_created' => $this->input->post('date_created'),
+		);
+	
+        $this->db->set('blogs', $data);
+        $this->db->where('blogs.id', $id);
+        $this->db->update('blogs');
+        $result =  $this->db->affected_rows(); 
+        return $result;
+    }
+	
+DELETE
+
+	public function delete_post($id){
+        $this->db->where('blogs.id', $id);
+        $this->db->delete('blogs');
+        $result = $this->db->affected_rows(); 
+        return $result;
+    }
+	
+CONTROLLERS

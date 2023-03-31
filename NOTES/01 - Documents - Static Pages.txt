@@ -1,0 +1,103 @@
+CodeIgniter is an open-source PHP web application framework that provides developers with a simple and elegant toolkit to create full-featured web applications. It is based on the Model-View-Controller (MVC) architectural pattern and offers a robust set of libraries for common tasks, such as database manipulation, form validation, and session management. CodeIgniter is known for its speed, ease of use, and small footprint, making it an ideal choice for developers who want a framework that is both lightweight and powerful.
+
+
+First download the codeigniter file from link below:
+https://codeigniter.com/download
+
+> upload the file to htdocs
+	> rename the codeigniter to your desire project name
+	> make sure the XAMP application is running
+	> then open the project to browser with localhost server
+		» http://localhost/crud
+	
+***Static pages
+The first we're going to do is to set up a controller to handle static pages.
+
+
+!!! A controller is simply a class that helps delegate work. It is the glue of your web application.
+
+***CONTROLLER
+> Let's create a controller named Pages
+
+root folder
+ - application
+	- controllers
+		[create] - Pages.php
+		
+The code will be:
+
+<?php
+class Pages extends CI_Controller {
+
+	public function view($page = 'home'){
+		
+	}
+}
+
+***VIEW
+Once done created the Pages controller, let us now create view file:
+
+application
+	- views 
+		-[create] templates folder
+			-[create] header.php
+			-[create] footer.php
+			
+header.php
+footer.php
+
+> Then let us create logic to the controller
+
+- controllers
+	- Pages.php
+	
+public function view($page = 'home')
+{
+        if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
+        {
+                // Whoops, we don't have a page for that!
+                show_404();
+        }
+
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/'.$page, $data);
+        $this->load->view('templates/footer', $data);
+}
+
+**** Routing
+Open the routing file located at application/config/routes.php and add the following two lines. Remove all other code that sets any element in the $route array.
+
+application
+	- config
+		-[open] routes.php
+
+	$route['default_controller'] = 'pages/view';
+	$route['(:any)'] = 'pages/view/$1';
+	
+if Error occour, we have to add htaccess file to root folder
+[create].htaccess
+	> add the code below:
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php/$1 [L]
+
+***Configuration
+application
+	- config
+		-[open] config.php
+			> update base_url:
+			$config['base_url'] = 'domain';
+			
+			> remove index.php:
+			$config['index_page'] = 'index.php';
+			
+		
+application
+	- config
+		-[open] autoload.php
+			> add helper
+			$autoload['helper'] = array('url','html','file','form');
+			

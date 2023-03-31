@@ -1,0 +1,71 @@
+Code Snippets:
+
+<?php echo base_url(); ?>
+// short code for main url ./ 'http://example.com/'
+	> used to source the files and links
+	> base from config.php //$config['base_url'] = 'http://example.com/';
+	
+CONTROLLER
+
+// every control has constructor for Initialization
+
+$variable_to_call;
+
+function __construct(){
+	parent::__construct(); // needed when adding a constructor to a controller
+	
+	$this->variable_to_call = array();		
+}
+
+// Sample Function for view
+public function index(){}
+public function view($id =  NULL){}
+
+// How to get view 
+$this->load->('head', $data);
+$this->load->('header', $data);
+$this->load->('main-folder/file-name', $data);
+$this->load->('footer', $data);
+
+
+VIEW -> FORM
+<?php echo form_open('url-link'); ?>
+<?php echo form_close() ?> used to generate the closing </form> tag.
+helper function provided by CodeIgniter that generates the opening HTML form tag with the specified parameters. It is a convenient way to create an HTML form with the required attributes and security features that are necessary to prevent cross-site request forgery (CSRF) attacks.
+
+<?php echo form_open_multipart('url-link'); ?>
+is a variant of the form_open() helper function in CodeIgniter that adds the enctype="multipart/form-data" attribute to the opening <form> tag. This attribute is required when you want to allow users to upload files through the form.
+
+// Use to add validate message
+<?php if(!empty(validation_errors())): ?>
+<strong><?php echo validation_errors(); ?></strong>
+<?php endif; ?>
+
+VIEW -> CONTROLLER
+// shortcode to get the input from form
+$this->input->post('field name');
+
+$this->form_validation->set_rules('field_name','Field Name','required');
+
+
+if(!$this->form_validation->run() === FALSE){ code hree... } else { if true, manipulate data }
+
+// used to store a temporary data in a session that can be accessed only once.
+$this->session->set_flashdata('key', 'value');
+$this->session->set_flashdata('msg_created', 'Created topic successfuly!')
+
+// used to redirect the user to a different URL or route. 
+redirect();
+
+MODEL -> CONTROLLER
+
+// adding constructor to iniitialize the database
+public function __construct(){
+	$this->load->database();
+}
+
+// Sample Function for model
+public functiion get($id = FALSE){ code here... }
+public functiion gets(){ code here... }
+public functiion create(){ code here... }
+public function update(){ code here ...}
